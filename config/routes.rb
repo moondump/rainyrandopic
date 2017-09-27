@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :image_likes
+  resources :likes
   resources :comments, only: [:create, :destroy]
   resources :images, only: [:index, :show, :update]
 
