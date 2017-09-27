@@ -3,8 +3,8 @@ class Like < ApplicationRecord
   has_one :image, through: :image_like
 
 
-  def self.count(image)
-    self.all.select {|like| like.image == image}.count
+  def count
+    self.class.all.select {|like| like.image = self.image}.count
   end
 
 end

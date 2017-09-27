@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @image = Image.find(params[:image_id])
     @comment = Comment.create(content: params[:comment])
     ImageComment.create(image: @image, comment: @comment)
-    render json: @image, :include => :comments, :methods => :like_count
+    render json: @image
   end
 
   def destroy
@@ -12,6 +12,6 @@ class CommentsController < ApplicationController
     @image = @comment.image
     ImageComment.find_by(comment_id: params[:id]).destroy
     @comment.destroy
-    render json: @image, :include => :comments, :methods => :like_count
+    render json: @image
   end
 end
