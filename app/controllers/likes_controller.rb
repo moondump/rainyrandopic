@@ -1,11 +1,8 @@
 class LikesController < ApplicationController
 
-  #Add in like model
-
   def create
-    @image = Image.find(params[:id])
-    @like = Like.create
-    @image_like = ImageLike.create(image: @image, like: @like)
+    @image = Image.find(params[:image_id])
+    @image_like = ImageLike.create(image: @image, like: Like.create)
     render json: @image
   end
 

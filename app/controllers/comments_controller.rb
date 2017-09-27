@@ -2,8 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     @image = Image.find(params[:image_id])
-    @comment = Comment.create(content: params[:comment])
-    ImageComment.create(image: @image, comment: @comment)
+    ImageComment.create(image: @image, comment: Comment.create(content: params[:comment]))
     render json: @image
   end
 
