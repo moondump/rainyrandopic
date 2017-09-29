@@ -2,18 +2,20 @@ class CommentsController < ApplicationController
 
   def create
     @image = Image.find(params[:image_id])
-    @comment = Comment.create(content: params[:comment])
-    ImageComment.create(image: @image, comment: @comment)
-    @comments = @image.comments
-    render json: @comments
+    # change parameter from `comment` to `content` in student readme
+    @comment = Comment.create(content: params[:content], image: @image)
+
+    # change response in student readme
+    render json: @comment
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @image = @comment.image
-    ImageComment.find_by(comment_id: params[:id]).destroy
     @comment.destroy
-    @comments = @image.comments
-    render json: @comments
+
+    # change response in student readme
+    render json: {message: 'Comment Successfully Destroyed'}
   end
+
+
 end

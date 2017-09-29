@@ -10,33 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927143135) do
+ActiveRecord::Schema.define(version: 20170927143026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
+    t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "image_comments", force: :cascade do |t|
-    t.bigint "image_id"
-    t.bigint "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_image_comments_on_comment_id"
-    t.index ["image_id"], name: "index_image_comments_on_image_id"
-  end
-
-  create_table "image_likes", force: :cascade do |t|
-    t.bigint "image_id"
-    t.bigint "like_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_image_likes_on_image_id"
-    t.index ["like_id"], name: "index_image_likes_on_like_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -47,12 +30,9 @@ ActiveRecord::Schema.define(version: 20170927143135) do
   end
 
   create_table "likes", force: :cascade do |t|
+    t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "image_comments", "comments"
-  add_foreign_key "image_comments", "images"
-  add_foreign_key "image_likes", "images"
-  add_foreign_key "image_likes", "likes"
 end
