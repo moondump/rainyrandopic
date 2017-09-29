@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
 
   def create
-    @image = Image.find(params[:image_id])
     # change parameter from `comment` to `content` in student readme
-    @comment = Comment.create(content: params[:content], image: @image)
+    @comment = Comment.create(content: params[:content], image_id: params[:image_id])
 
     # change response in student readme
     render json: @comment
