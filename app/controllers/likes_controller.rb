@@ -1,9 +1,9 @@
 class LikesController < ApplicationController
 
   def create
-    @image = Image.find(params[:image_id])
-    @like = Like.create
-    @image_like = ImageLike.create(image: @image, like: @like)
+    @like = Like.create(image_id: params[:image_id])
+
+    # removed like serializer, change response in student readme
     render json: @like
   end
 
