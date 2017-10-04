@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment = Comment.create(content: params[:content], image_id: params[:image_id])
 
     # change response in student readme
+    
     render json: @comment
   end
 
