@@ -4,11 +4,7 @@ class ApplicationController < ActionController::API
     #destroys all records
     Like.destroy_all
     Comment.destroy_all
-    Image.destroy_all
-    #resets IDs to start a 1
-    ActiveRecord::Base.connection.execute("TRUNCATE likes")
-    ActiveRecord::Base.connection.execute("TRUNCATE comments")
-    ActiveRecord::Base.connection.execute("TRUNCATE images")
+    Image.order('id desc').offset(50).destroy_all
 
     image_array = [
       {url: "http://blog.flatironschool.com/wp-content/uploads/2017/06/IMAG2936-352x200.jpg", name: "Science Fair"},
@@ -19,10 +15,10 @@ class ApplicationController < ActionController::API
       {url: "http://blog.flatironschool.com/wp-content/uploads/2016/10/Code-Background-352x200.jpg", name: "Info Hash"},
       {url: "http://blog.flatironschool.com/wp-content/uploads/2017/02/Campus_Normal-352x200.png", name: "Lovelace Graffiti Wall"}
     ]
-    50.times do
-      Comment.create(image: Image.create(image_array[rand(image_array.length)]), content: 'first comment!')
-    end
-
+    50.times { |x|
+      Comment.create(image: Image.find(x+1), content: 'first comment!')
+    }
+    
     render json: Image.all, include: [:comments, :likes]
   end
 
