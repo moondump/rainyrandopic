@@ -1,24 +1,50 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RandoPic is a Rails Backend built for use in conjunction with the [JavaScript Fetch and Dom Code Challenge](https://github.com/learn-co-curriculum/javascript-code-challenge-fetch-and-dom).  This backend is designed to allow for students to render a specific image using GET, manipulate the DOM with JavaScript using JSON data and to persist changes (incrementing image 'likes' and adding associated comments).  This repo is meant for instructor use
 
-Things you may want to cover:
+Endpoints:
 
-* Ruby version
+Rewrite all records with original seed data (reset for new challenge)
+```
+GET 'https://randopic.herokuapp.com/admin/dont-use-this-route/reset_to_seed'
+Example Response:
+[
+  {
+    "id": 101,
+    "url": "http://blog.flatironschool.com/wp-content/uploads/2017/06/IMAG2936-352x200.jpg",
+    "name": "Science Fair",
+    "like_count": 0,
+    "comments": [
+      {
+        "id": 101,
+        "content": "first comment!",
+        "image_id": 101,
+        "created_at": "2017-10-04T16:20:08.622Z",
+        "updated_at": "2017-10-04T16:20:08.622Z"
+      }
+    ]
+  },
+  
+  ...
+```
 
-* System dependencies
+Get one image
+```
+GET 'https://randopic.herokuapp.com/images/:image_id'
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Example Response:
+{
+  "id": 1,
+  "url": "http://blog.flatironschool.com/wp-content/uploads/2017/06/IMAG2936-352x200.jpg",
+  "name": "Science Fair",
+  "like_count": 0,
+  "comments": [
+    {
+      "id": 1,
+      "content": "first comment!",
+      "created_at": "2017-09-27T18:18:05.623Z",
+      "updated_at": "2017-09-27T18:18:05.623Z"
+    }
+  ]
+}
+```
