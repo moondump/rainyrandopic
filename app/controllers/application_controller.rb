@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::API
 
   def reset_to_seed
+    #destroys all records
     Like.destroy_all
     Comment.destroy_all
     Image.destroy_all
+    #resets IDs to start a 1
+    ActiveRecord::Base.connection.execute("TRUNCATE likes")
+    ActiveRecord::Base.connection.execute("TRUNCATE comments")
+    ActiveRecord::Base.connection.execute("TRUNCATE images")
 
     image_array = [
       {url: "http://blog.flatironschool.com/wp-content/uploads/2017/06/IMAG2936-352x200.jpg", name: "Science Fair"},
