@@ -110,13 +110,6 @@ DELETE 'https://randopic.herokuapp.com/comments/:comment_id'
 ```
 Example Response:
 {
-  [
-    {
-      "id": 52,
-      "content": "second comment!",
-      "created_at": "2017-09-27T18:25:05.623Z",
-      "updated_at": "2017-09-27T18:25:05.623Z"
-    }
-  ]
+  message: 'Comment Successfully Destroyed'
 }
 ```
