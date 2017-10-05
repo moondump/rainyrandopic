@@ -93,13 +93,13 @@ Example Response (created comment):
     "created_at": "2017-09-27T18:18:05.623Z",
     "updated_at": "2017-09-27T18:18:05.623Z"
   }
-}```
+}
+```
 
 Delete comment:
 ```
 DELETE 'https://randopic.herokuapp.com/comments/:comment_id'
 
-```
 Example Response:
 {
   message: 'Comment Successfully Destroyed'
