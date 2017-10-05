@@ -4,7 +4,7 @@ RandoPic is a Rails Backend built for use in conjunction with the [JavaScript Fe
 
 Endpoints:
 
-Rewrite all records with original seed data (reset for new challenge)
+Rewrite all records with original seed data (reset for new challenge):
 ```
 GET 'https://randopic.herokuapp.com/admin/dont-use-this-route/reset_to_seed'
 Example Response:
@@ -28,7 +28,7 @@ Example Response:
   ...
 ```
 
-Get one image
+Get one image by id:
 ```
 GET 'https://randopic.herokuapp.com/images/:image_id'
 
@@ -44,6 +44,78 @@ Example Response:
       "content": "first comment!",
       "created_at": "2017-09-27T18:18:05.623Z",
       "updated_at": "2017-09-27T18:18:05.623Z"
+    }
+  ]
+}
+```
+
+Increment Image Likes by One:
+```
+POST 'https://randopic.herokuapp.com/likes'
+
+Required keys in the body of the request:
+{
+  image_id: <insert image id here>
+}
+
+Required Headers
+{
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+}
+
+Example Response:
+{
+  like_count: 5
+}
+```
+Add comment to image:
+```
+POST 'https://randopic.herokuapp.com/comments'
+
+Required keys in the body of the request:
+{
+  image_id: <insert image id here>,
+  content: <insert comment content here>
+}
+
+Required Headers
+{
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+}
+
+Example Response:
+{
+  [
+    {
+      "id": 2,
+      "content": "first comment!",
+      "created_at": "2017-09-27T18:18:05.623Z",
+      "updated_at": "2017-09-27T18:18:05.623Z"
+    },
+    {
+      "id": 52,
+      "content": "second comment!",
+      "created_at": "2017-09-27T18:25:05.623Z",
+      "updated_at": "2017-09-27T18:25:05.623Z"
+    }
+  ]
+}```
+
+Delete comment:
+```
+DELETE 'https://randopic.herokuapp.com/comments/:comment_id'
+
+
+Example Response:
+{
+  [
+    {
+      "id": 52,
+      "content": "second comment!",
+      "created_at": "2017-09-27T18:25:05.623Z",
+      "updated_at": "2017-09-27T18:25:05.623Z"
     }
   ]
 }
