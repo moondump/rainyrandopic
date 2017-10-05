@@ -85,22 +85,14 @@ Required Headers
   'Content-Type': 'application/json'
 }
 
-Example Response:
+Example Response (created comment):
 {
-  [
-    {
-      "id": 2,
-      "content": "first comment!",
-      "created_at": "2017-09-27T18:18:05.623Z",
-      "updated_at": "2017-09-27T18:18:05.623Z"
-    },
-    {
-      "id": 52,
-      "content": "second comment!",
-      "created_at": "2017-09-27T18:25:05.623Z",
-      "updated_at": "2017-09-27T18:25:05.623Z"
-    }
-  ]
+  {
+    "id": 2,
+    "content": "first comment!",
+    "created_at": "2017-09-27T18:18:05.623Z",
+    "updated_at": "2017-09-27T18:18:05.623Z"
+  }
 }```
 
 Delete comment:
