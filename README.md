@@ -107,7 +107,7 @@ Delete comment:
 ```
 DELETE 'https://randopic.herokuapp.com/comments/:comment_id'
 
-
+```
 Example Response:
 {
   [
