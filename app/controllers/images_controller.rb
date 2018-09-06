@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
 
   def index
-    @image = Image.find(1 + rand(50))
+    @image = Image.find(1 + rand(200))
     render json: @image
   end
 

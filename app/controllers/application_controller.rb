@@ -4,7 +4,6 @@ class ApplicationController < ActionController::API
     #destroys all records
     Like.destroy_all
     Comment.destroy_all
-    Image.order('id desc').offset(50).destroy_all
 
     image_array = [
       {url: "http://blog.flatironschool.com/wp-content/uploads/2017/06/IMAG2936-352x200.jpg", name: "Science Fair"},
@@ -18,7 +17,7 @@ class ApplicationController < ActionController::API
     200.times { |x|
       Comment.create(image: Image.find(x+1), content: 'first comment!')
     }
-    
+
     render json: Image.all, include: [:comments, :likes]
   end
 
