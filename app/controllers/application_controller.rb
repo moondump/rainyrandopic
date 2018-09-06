@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
       {url: "http://blog.flatironschool.com/wp-content/uploads/2016/10/Code-Background-352x200.jpg", name: "Info Hash"},
       {url: "http://blog.flatironschool.com/wp-content/uploads/2017/02/Campus_Normal-352x200.png", name: "Lovelace Graffiti Wall"}
     ]
-    50.times { |x|
+    200.times { |x|
       Comment.create(image: Image.find(x+1), content: 'first comment!')
     }
     
