@@ -15,6 +15,6 @@ image_array = [
   {url: "http://blog.flatironschool.com/wp-content/uploads/2016/10/Code-Background-352x200.jpg", name: "Info Hash"},
   {url: "http://blog.flatironschool.com/wp-content/uploads/2017/02/Campus_Normal-352x200.png", name: "Lovelace Graffiti Wall"}
 ]
-50.times do 
+200.times do 
   Comment.create(image: Image.create(image_array[rand(image_array.length)]), content: 'first comment!')
 end
