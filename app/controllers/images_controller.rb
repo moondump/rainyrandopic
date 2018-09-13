@@ -6,7 +6,8 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.find(params[:id])
+    @image = ImageCreator.new(uuid: params[:uuid]).find_or_create_image
+
     render json: @image
   end
 

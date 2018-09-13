@@ -1,5 +1,5 @@
 class ImageSerializer < ActiveModel::Serializer
-  attributes :id, :url, :name, :like_count
+  attributes :id, :url, :name, :like_count, :uuid
   has_many :comments
 
   def like_count
