@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to the RandoPic API!</title>
+    <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        background: #ddd;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      main {
+        /*border: 2px groove;*/
+        background: #fff;
+        max-width: 720px;
+        margin: 0px auto;
+        padding: 40px;
+        box-sizing: border-box;
+      }
+      .image-id, .endpoint-url {
+        position: relative;
+        margin: 10px 0;
+        display: block;
+      }
+      .image-id textarea, .endpoint-url textarea {
+        display: block;
+        font-size: 18px;
+        font-family: courier, monospace;
+        border: 1px inset pink;
+        background: lavender;
+        padding: 10px;
+        padding-right: 120px;
+        width: 100%;
+        box-sizing: border-box;
+        height: 100px;
+        vertical-align: center;
+      }
+      .copy {
+        background: none;
+        border: 1px outset;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        width: 100px;
+        padding: 5px;
+        background: pink;
+        font-size: 14px;
+      }
+    </style>
+    <script type="text/javascript">
+      function copyThis(){
+        var childNodes = this.parentNode.childNodes
+        for (var i = 0; i < childNodes.length; i++) {
+          var child = childNodes[i]
+          if (child.className == "value") {
+            // debugger
+            child.disabled = false
+            child.select();
+            document.execCommand("copy");
+            if (window.getSelection) {window.getSelection().removeAllRanges();}
+            else if (document.selection) {document.selection.empty();}
+            child.disabled = true
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function(){
+        var copyButtons = document.getElementsByClassName("copy")
+        for (var i = copyButtons.length - 1; i >= 0; i--) {
+          copyButtons[i].addEventListener("click", copyThis)
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Welcome to the RandoPic API!</h1>
+      <p>You'll need an Image ID to proceed, and we made one just for you: 
+        <span class="image-id"><textarea disabled class="value"><%= @image_id %></textarea><button class="copy">copy this id</button></span>
+      </p>
+      <p>This ID will be useful to access some of the endpoints of the API, like this one:
+        <span class="endpoint-url">
+          <textarea disabled class="value"><%= @base_url %>/images/<%= @image_id %></textarea> <button class="copy">copy this link</button>
+        </span>
+      </p>
+      <p>Go do great things!</p>
+    </main>
+  </body>
+</html>

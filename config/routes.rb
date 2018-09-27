@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "/", to: "welcome#index"
+
   resources :likes, only: [:create]
   resources :comments, only: [:create, :destroy]
   resources :images, only: [:index, :show], param: :uuid
