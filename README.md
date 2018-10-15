@@ -9,7 +9,7 @@ Generate a new Image:
 GET 'https://randopic.herokuapp.com'
 ```
 
-This will give the student a new Image and Image ID to use for the code challenge.
+This will generate a new `Image` for the student and display the `image_id` as well as the URL for the endpoint which will return the full image data.
 
 ---
 
