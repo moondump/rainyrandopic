@@ -23,4 +23,11 @@ class Image < ApplicationRecord
       img.name = rand_details[:name]
     end
   end
+
+  after_create do |img|
+    if self.class.count > 5000
+      ids = self.class.order('created_at DESC').limit(4000).pluck(:id)
+      self.class.where(id: ids).delete_all
+    end
+  end
 end
