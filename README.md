@@ -4,7 +4,16 @@ RandoPic is a Rails Backend built for use in conjunction with the [JavaScript Fe
 
 Endpoints:
 
-Rewrite all records with original seed data (reset for new challenge):
+Generate a new Image:
+```
+GET 'https://randopic.herokuapp.com'
+```
+
+This will give the student a new Image and Image ID to use for the code challenge.
+
+---
+
+Rewrite all records with original seed data. You shouldn't need to use this as the API will automatically delete old records:
 ```
 GET 'https://randopic.herokuapp.com/admin/dont-use-this-route/reset_to_seed'
 Example Response:
@@ -24,9 +33,11 @@ Example Response:
       }
     ]
   },
-  
+
   ...
 ```
+
+---
 
 Get one image by id:
 ```
@@ -48,6 +59,8 @@ Example Response:
   ]
 }
 ```
+
+---
 
 Increment Image Likes by One:
 ```
@@ -72,6 +85,9 @@ Example Response:
     "updated_at": "2017-11-17T13:52:22.167Z"
 }
 ```
+
+---
+
 Add comment to image:
 ```
 POST 'https://randopic.herokuapp.com/comments'
@@ -98,6 +114,8 @@ Example Response (created comment):
   }
 }
 ```
+
+---
 
 Delete comment:
 ```
