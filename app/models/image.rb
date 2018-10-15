@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
-  has_many :comments
-  has_many :likes
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def like_count
     self.likes.count
@@ -26,9 +26,6 @@ class Image < ApplicationRecord
   end
 
   after_create do |img|
-    if self.class.count > 5000
-      ids = self.class.order('created_at DESC').limit(4000).pluck(:id)
-      self.class.where(id: ids).delete_all
-    end
+    Image.where("created_at < '#{60.days.ago}'").destroy_all
   end
 end
