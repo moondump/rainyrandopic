@@ -21,6 +21,7 @@ class Image < ApplicationRecord
       rand_details = IMAGES.sample
       img.url = rand_details[:url]
       img.name = rand_details[:name]
+      img.comments.build(content: 'first comment!')
     end
   end
 
