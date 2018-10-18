@@ -56,7 +56,6 @@
         for (var i = 0; i < childNodes.length; i++) {
           var child = childNodes[i]
           if (child.className == "value") {
-            // debugger
             child.disabled = false
             child.select();
             document.execCommand("copy");
